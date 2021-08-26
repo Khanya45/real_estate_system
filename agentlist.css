@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;   
+}
+
+
+.agent_list{
+    width: 100%;
+    height: 100%;
+}
+.header{
+    margin:3%;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.agent_container {
+    width: 50%;
+    height: 100vh;
+    margin-top: 10%;
+}
+.agent_card {
+    border: 1px solid grey;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    
+}
+.agent_img img{
+    width: 270px;;
+    height: 100%;
+}
+.agent_info {
+    padding: 5%;
+    padding-bottom: 1%;
+    padding-right: 2%;
+}
+.agent_listings {
+    display: flex;
+    flex-direction: row;
+}
+.agent_listings :first-child{
+    margin-right: 20px;
+}
+.agent_info h3{
+    margin-bottom: 20px;
+}
+.get_agent_btn {
+    display: flex;
+    justify-content: flex-end;
+}
+.get_agent_btn button{
+    background-color: #1f2421;
+    padding: 10px;
+    color: white;
+    border: none;
+}
+/* 
+<div class="agent_list">
+        <div class="agent_container">
+            <div class="agent_card">
+                <div class="agent_img">
+                    <img>
+                </div>
+                <div class="agent_info">
+                    <h3>Agent's Fullname</h3>
+                    <div class="agent_listings">
+                        <h3>Sale listings:0</h3>
+                        <h3>Rental listings:0</h3>
+                    </div>
+                    <h3>Location</h3>
+                    <h3>Estate Agent</h3>
+                    <button class="get_agent_btn">Get Agent</button>
+*/
