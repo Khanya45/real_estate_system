@@ -68,12 +68,12 @@ body{
     border:1px solid grey;
     width: 100%;
     margin-bottom: 10px;
-    height: 100%;
+    height: 226px;
 }
 
 .img_property img{
     width:100%;
-    height: 220px;
+    height: 100%;
 }
 .property_info{
     display: flex;

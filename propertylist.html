@@ -18,13 +18,13 @@
           <h1>Find Property</h1>
         </div>
         <div class="top-bar">
-          <a href="#landing_page">Sell</a>
+          <a href="/sellproperty.html">Sell</a>
           <a href="#about_page">Affordability Calculator</a>
           <a href="#portfolio_page"><i class="far fa-user-circle"></i></a>
         </div>
     </div>
     <div id="property_header">
-        <h1>Property For Sale In Gardens</h1>
+        <h1>Properties For Sale In Gardens</h1>
     </div>
     <div class="property_page">
         <div class="filter_property">
@@ -42,15 +42,15 @@
             </div>    
             <div class="property_type">
                 <label>Property Type</label><br>
-                <input type="checkbox" value="houses" >Houses<br>  
-                <input type="checkbox" value="flats & apartments" >Flats & Apartments<br>  
-                <input type="checkbox" value="townhouse">Townhouse<br>  
+                <input id="check" type="checkbox" value="house" >Houses<br>  
+                <input id="check" type="checkbox" value="flats&apartments" >Flats & Apartments<br>  
+                <input id="check" type="checkbox" value="townhouse">Townhouse<br>  
             </div>
-            <button class="btn_filter">Apply Filter</button>
+            <button class="btn_filter" onclick="filterAll()">Apply Filter</button>
             
         </div>
         <div class="property_container" >
-            <div class="property_card">
+            <div class="property_card" onclick="redirectToInfo()">
                 <div class="img_property">
                     <img src="https://prppublicstore.blob.core.windows.net/live-za-images/property/1163/40/7881163/images/property-7881163-34782882_sd.jpg">
                 </div>
@@ -94,6 +94,6 @@
             </div>
         </div>
     </div>
-    <script src="/dynamic.js"></script>
+    <script src="/Javascript/propertylist.js"></script>
 </body>
 </html>
