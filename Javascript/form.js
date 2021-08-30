@@ -24,20 +24,28 @@ for (let i = 0; i < tabPanes.length; i++) {
 user = [];
 newUser = [];
 
-// ===========================================  LOGIN/SIGNUP PAGE   ==================================================
+// ===========================================  SIGNUP PAGE FOR USER & AGENT   ==================================================
 
 
 
 function agent_signUp(){
-  let signedUp = []
+  let signedUp = {}
   let agentInputs = document.getElementsByTagName("input")
-  for (index=0; index<6;index++){
-    signedUp.push(agentInputs[index].value)
+  signedUp ={
+    "fullname":agentInputs[0].value,
+    "estate_agent":agentInputs[1].value,
+    "location":agentInputs[2].value,
+    "image":agentInputs[3].value,
+    "mobile":agentInputs[4].value,
+    "email":agentInputs[5].value,
+    "password":agentInputs[6].value
   }
+ 
+
   localStorage.signed = JSON.stringify(signedUp);
   fetch("https://desolate-retreat-38151.herokuapp.com/agent-registration/", {
   method: "POST",
-  body: window.localStorage.getItem("signed"),
+  body: localStorage.getItem("signed"),
   headers: {
     "Content-type": "application/json; charset=UTF-8",
   },
@@ -47,5 +55,48 @@ function agent_signUp(){
   )
 }
 
+// ===========================================  SIGNIN PAGE FOR USER & AGENT   ==================================================
 
 
+function signIn(){
+  let user = []
+  let inputs = document.getElementsByTagName("input")
+  fetch("https://desolate-retreat-38151.herokuapp.com/get-users/", {
+        method: "get",
+        })
+  .then((res) => res.json())
+  .then((json) => {
+    users = json.data
+    for (index = 0; index < inputs.length; ++index) {
+      user.push(inputs[index].value);
+    }
+    let login = users.find((logged) => {
+      return logged[3] == user[1];
+    });
+    if (login){
+      localStorage.loggedIn = JSON.stringify(login)
+      window.location.replace("http://127.0.0.1:5501/index.html")
+    } 
+    else{
+      fetch("https://desolate-retreat-38151.herokuapp.com/get-agents/", {
+        method: "get",
+        })
+      .then((res) => res.json())
+      .then((json) => {
+        agents = json.data
+        console.log("welcome back",agents)
+        let login = agents.find((logged) => {
+          return logged[5] == user[1];
+        });
+        if (login){
+          localStorage.loggedIn = JSON.stringify(login)
+           window.location.replace("http://127.0.0.1:5501/index.html")
+        }
+        else{
+          alert("User not found")
+        }
+        })
+        
+      }
+  })
+}

@@ -1,6 +1,7 @@
-
+let arrProperties=[];
 // ========================= DISPLAYING PROPERTIES FILTERD BY SUBURB ==========================
 function displayProperty(arrProperty){
+    // arrProperty.forEach(property=> {console.log(property)})
     let container = document.querySelector(".property_container")
     container.innerHTML= "";
     arrProperty.forEach(property => {   
@@ -33,6 +34,7 @@ function filterBySuburb(){
         arrProperty = json.data
         // console.log(arrProperty)
         displayProperty(arrProperty)
+        arrProperties.push(json.data)
     })
     let header = document.querySelector("#property_header")
     header.innerHTML =""
@@ -41,12 +43,11 @@ function filterBySuburb(){
 
 filterBySuburb();
 
-
 // ========================= DISPLAYING PROPERTIES FILTERD BY Property Type ==========================
 
 function filterAll(){
     let checkBox = document.getElementsByTagName("input")
-    let filteredList
+    let filteredList = []
     let checkedBox = [];
     for (index=2; index<checkBox.length;index++){
         if (checkBox[index].checked) {
@@ -60,13 +61,21 @@ function filterAll(){
         })
         .then((res) => res.json())
         .then((json) => {
-           filteredList = json.data
-           displayProperty(json.data)
+            arrProp = json.data  
+            for (i=0; i<arrProp.length;i++){
+                displayProperty(filteredList)
+           filteredList.push(arrProp[i])
+
+            }
         })
     }
-    // displayProperty(filteredList)
-    filteredList.forEach(array => {console.log(array[0])})
+    // filteredList.forEach(property=>{
+    //     console.log(property)
+    // })
+    // console.log(filteredList)
     console.log(filteredList)
+    // displayProperty(filteredList)
+    
 }
 
 function redirectToInfo(id){
