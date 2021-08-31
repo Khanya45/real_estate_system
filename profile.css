@@ -6,6 +6,7 @@
 
 body{
     height: 100vh;
+    background-color: #1f2421;
 }
 .profile_page {
     background-color: #1f2421;
@@ -49,8 +50,11 @@ body{
 }
 .user_details img{
     width: 20%;
-    height: 200px;
+    height: 95%;
     border-radius: 50%;
+    object-fit: cover;
+    min-width: 140px;
+    min-height: 70%;
 }
 .info {
     display: flex;
@@ -69,7 +73,7 @@ body{
 .user_properties {
     background-color:white;
     width: 100%;
-    height: 100%;
+    height: fit-content;
 }
 .img_property{
     /* width: 30%; */
@@ -81,7 +85,7 @@ body{
     margin-top: 40px;
 }
 .property_card {
-    margin-left: 10px;
+    margin: 10px;
 }
 .user_properties {
     display: flex;
@@ -108,4 +112,20 @@ body{
     color: black;
     border: none;
     
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    margin-left: 30px;
+}
+
+.form input{
+    padding: 7px;
+    margin: 10px;
+}
+
+.form_1 , .form_2{
+    display: flex;
+    flex-direction: column;
 }
