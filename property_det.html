@@ -51,61 +51,8 @@
               
                 <form
                     class="contact-form"
-                    action="https://formspree.io/f/xzbyzobo"
-                    method="POST"
+                    onsubmit="return false"
                 >
-                    <div id="heading">
-                        <label>Contact Agent</label>
-                    </div>
-                    <div>
-                        <input
-                            type="text"
-                            required
-                            placeholder="Enter your fullname"
-                            class="contact-info"
-                        />
-                        </label>
-                    </div>
-                    <div>
-                        
-                        <!-- Surname: -->
-                        <input
-                            class="contact-info"
-                            type="surname"
-                            name="surname"
-                            id="surname"
-                            required
-                            placeholder="Enter your phone number"
-                        />
-                        </label>
-                    </div>
-                    <div>
-                        <label for="email">
-                        <!-- Your email: -->
-                        <input
-                            class="contact-info"
-                            type="email"
-                            name="_replyto"
-                            id="email"
-                            required
-                            placeholder="Enter your email"
-                        />
-                        </label>
-                    </div>
-                    <div>
-                        <label for="message">
-                        <!-- Your message: -->
-                        <textarea
-                            name="message"
-                            id="text-box"
-                            placeholder="Enter your message"
-                        ></textarea>
-                        </label>
-                    </div>
-
-                    <!-- your other form fields go here -->
-
-                    <button type="submit" id="submit-btn">Email Agent</button>
                 </form>
   </body>
 
