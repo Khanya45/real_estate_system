@@ -1,5 +1,5 @@
 function displayAgents(){
-    fetch("http://127.0.0.1:5000/get-agents/", {
+    fetch("https://desolate-retreat-38151.herokuapp.com/get-agents/", {
         method: "get",
         })
         .then((res) => res.json())
@@ -9,7 +9,7 @@ function displayAgents(){
             let container = document.querySelector(".agent_container")
             container.innerHTML= ""
             arrAgents.forEach(agent=>{
-                fetch(`http://127.0.0.1:5000/get-listings/${agent[0]}/`, {
+                fetch(`https://desolate-retreat-38151.herokuapp.com/get-listings/${agent[0]}/`, {
                 method: "get",
                 })
                 .then((res) => res.json())

@@ -77,7 +77,7 @@ function filterAll(){
 
 function redirectToInfo(id){
     localStorage.property_id = JSON.stringify(id)
-    window.location.replace("http://127.0.0.1:5501/property_det.html")
+    window.location.replace("https://desolate-retreat-38151.herokuapp.com/property_det.html")
 }
 
 function filterByPrice(){
@@ -88,7 +88,7 @@ function filterByPrice(){
         price.push(checkBox[index].value)  
     }
     if (price.length=2){
-        fetch("http://127.0.0.1:5002/filter-by-price/"+price[0]+"/"+price[1]+"/"+suburb+"/", {
+        fetch("https://desolate-retreat-38151.herokuapp.com/filter-by-price/"+price[0]+"/"+price[1]+"/"+suburb+"/", {
             method: "get",
             })
             .then((res) => res.json())

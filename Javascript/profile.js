@@ -27,7 +27,7 @@ function getLoggedUser(){
             </div>
         </div>
         `
-        fetch("http://127.0.0.1:5000/property-by-agent/"+parseInt(loggedUser[0])+"/", {
+        fetch("https://desolate-retreat-38151.herokuapp.com/property-by-agent/"+parseInt(loggedUser[0])+"/", {
         method: "get",
         })
         .then((res) => res.json())
