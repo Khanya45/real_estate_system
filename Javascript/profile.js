@@ -297,9 +297,29 @@ function getProperty(){
     })
   }
   else{
+    let prop_container = document.querySelector(".property_container")
+    prop_container.innerHTML = `
+    <h2>You have no property yet</h2>
+    <div class="property_card">
+      <div class="img_property">
+          <img src="https://images.assetsdelivery.com/compings_v2/ahasoft2000/ahasoft20001509/ahasoft2000150900212.jpg">
+      </div>
+      </div>
+      <div class="property_card">
+      <div class="img_property">
+          <img src="https://images.assetsdelivery.com/compings_v2/ahasoft2000/ahasoft20001509/ahasoft2000150900212.jpg">
+      </div>
+      </div>
+      <div class="property_card">
+      <div class="img_property">
+          <img src="https://images.assetsdelivery.com/compings_v2/ahasoft2000/ahasoft20001509/ahasoft2000150900212.jpg">
+      </div>
+    </div>
+    `
     alert("You have no properties")
   }
 }
+
 
 getProperty();
 
@@ -315,9 +335,11 @@ function deleteUser(){
     fetch("https://desolate-retreat-38151.herokuapp.com/delete-user/" + loggedUser[0] + "/")
     .then((res) => res.json())
     .then((data) => console.log(data));
-    localStorage.removeItem("loggedUser");
+    localStorage.removeItem("loggedIn");
+    getLoggedUser()
   }
   else{
     alert("Please log in")
   }
+  
 }
