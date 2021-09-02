@@ -282,40 +282,39 @@ function getProperty(){
         .then((res) => res.json())
         .then((json) => {
           yourProperty = json.data
-          console.log(yourProperty)
           let container = document.querySelector(".property_container")
-          container.innerHTML = ""
-          yourProperty.forEach(property=>{
-            container.innerHTML += `
+          if (yourProperty.length > 0){
+            container.innerHTML = ""
+            yourProperty.forEach(property=>{
+              container.innerHTML += `
+              <div class="property_card">
+                <div class="img_property">
+                    <img src="${property[7]}">
+                </div>
+              </div>
+              `
+            })
+          }
+          else{
+            container.innerHTML = ""
+            container.innerHTML = `
+            <h2>You have no properties yet</h2>
             <div class="property_card">
               <div class="img_property">
-                  <img src="${property[7]}">
+                  <img src="https://images.assetsdelivery.com/compings_v2/ahasoft2000/ahasoft20001509/ahasoft2000150900212.jpg">
               </div>
-            </div>
+              </div>
+              <div class="property_card">
+              <div class="img_property">
+                  <img src="https://images.assetsdelivery.com/compings_v2/ahasoft2000/ahasoft20001509/ahasoft2000150900212.jpg">
+              </div>
+              </div>
+              
             `
-          })
+          }
     })
   }
   else{
-    let prop_container = document.querySelector(".property_container")
-    prop_container.innerHTML = `
-    <h2>You have no property yet</h2>
-    <div class="property_card">
-      <div class="img_property">
-          <img src="https://images.assetsdelivery.com/compings_v2/ahasoft2000/ahasoft20001509/ahasoft2000150900212.jpg">
-      </div>
-      </div>
-      <div class="property_card">
-      <div class="img_property">
-          <img src="https://images.assetsdelivery.com/compings_v2/ahasoft2000/ahasoft20001509/ahasoft2000150900212.jpg">
-      </div>
-      </div>
-      <div class="property_card">
-      <div class="img_property">
-          <img src="https://images.assetsdelivery.com/compings_v2/ahasoft2000/ahasoft20001509/ahasoft2000150900212.jpg">
-      </div>
-    </div>
-    `
     alert("You have no properties")
   }
 }
