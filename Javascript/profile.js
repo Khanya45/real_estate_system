@@ -1,5 +1,5 @@
 loggedUser = JSON.parse(localStorage.getItem("loggedIn"))
-// console.log(loggedUser)
+console.log(loggedUser)
 function getLoggedUser(){
     let container = document.querySelector(".user_details")
     // console.log(loggedUser)

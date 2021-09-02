@@ -44,7 +44,7 @@ body{
     border-bottom-left-radius:40px;
     border-bottom-right-radius:40px;
     color: rgb(141, 173, 147);
-    height: 90%;
+    max-height: 90%;
     align-items: center;
     padding:4%;
 }

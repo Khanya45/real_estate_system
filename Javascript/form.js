@@ -31,28 +31,68 @@ newUser = [];
 function agent_signUp(){
   let signedUp = {}
   let agentInputs = document.getElementsByTagName("input")
-  signedUp ={
-    "fullname":agentInputs[0].value,
-    "estate_agent":agentInputs[1].value,
-    "location":agentInputs[2].value,
-    "image":agentInputs[3].value,
-    "mobile":agentInputs[4].value,
-    "email":agentInputs[5].value,
-    "password":agentInputs[6].value
+  if (agentInputs.length=10){
+    signedUp ={
+      "fullname":agentInputs[0].value,
+      "estate_agent":agentInputs[1].value,
+      "location":agentInputs[2].value,
+      "image":agentInputs[3].value,
+      "mobile":agentInputs[4].value,
+      "email":agentInputs[5].value,
+      "password":agentInputs[6].value
+    }
+    user = JSON.stringify(signedUp)
+    fetch("https://desolate-retreat-38151.herokuapp.com/agent-registration/", {
+    method: "POST",
+    body: user,
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+     })
+    .then((response) => response.json())
+    .then((json) => {
+      if (json.data["status_code"] == 201 ){
+        localStorage.loggedIn = user
+        window.location.replace("http://127.0.0.1:5501/index.html")
+        alert("Please sign in after sign up")
+      } 
+    }
+    )
+  }else{
+    alert("Fill all the info required")
   }
- 
+}
 
-  localStorage.signed = JSON.stringify(signedUp);
-  fetch("https://desolate-retreat-38151.herokuapp.com/agent-registration/", {
-  method: "POST",
-  body: localStorage.getItem("signed"),
-  headers: {
-    "Content-type": "application/json; charset=UTF-8",
-  },
-})
-  .then((response) => response.json())
-  .then((json) => {console.log(json)}
-  )
+function user_signUp(){
+  let agentInputs = document.getElementsByTagName("input")
+  signedUp ={
+    "fullname":agentInputs[7].value,
+    "email":agentInputs[8].value,
+    "password":agentInputs[9].value
+  }
+  if (signedUp.length=3){
+    user = JSON.stringify(signedUp)
+    fetch("https://desolate-retreat-38151.herokuapp.com/user-registration/", {
+      method: "POST",
+      body: user,
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      console.log(json)
+      if (json["status_code"] == 201 ){
+        localStorage.loggedIn = user
+        window.location.replace("http://127.0.0.1:5501/index.html")
+        alert("Please sign in after sign up")
+      } 
+    }
+    )
+  }
+  else{
+    alert("Fill all the info required")
+  }
 }
 
 // ===========================================  SIGNIN PAGE FOR USER & AGENT   ==================================================
