@@ -51,7 +51,7 @@ function agent_signUp(){
      })
     .then((response) => response.json())
     .then((json) => {
-      if (json.data["status_code"] == 201 ){
+      if (json["status_code"] == 201 ){
         localStorage.loggedIn = user
         window.location.replace("http://127.0.0.1:5501/index.html")
         alert("Please sign in after sign up")
