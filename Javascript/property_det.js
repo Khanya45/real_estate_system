@@ -107,7 +107,7 @@ function send_email(id){
   let textarea = document.getElementById("text-box").value
   body = `I, ${info[0]}\n ${textarea} \n Here my contacts:\n Mobile:${info[1]}\n email:${info[2]}`
   // console.log(JSON.stringify(body))
-  fetch("http://127.0.0.1:5002/send-email/"+id+"/"+body+"/", {
+  fetch("https://desolate-retreat-38151.herokuapp.com/send-email/"+id+"/"+body+"/", {
         method: "POST",
         body: info[2],
         headers: {

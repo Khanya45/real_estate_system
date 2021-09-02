@@ -6,18 +6,18 @@ function displayProperty(arrProperty){
     container.innerHTML= "";
     arrProperty.forEach(property => {   
       container.innerHTML += `
-      <div class="property_card" onclick="redirectToInfo(${property[0]})">
-        <div class="img_property">
+      <div class="property_card">
+        <div class="img_property" onclick="redirectToInfo(${property[0]})">
             <img src="${property[7]}">
         </div>
-        <div class="property_info">
+        <div class="property_info" onclick="redirectToInfo(${property[0]})">
             <h4>${property[1]}</h4>
             <h4>R${property[3]}</h4>
             <h4>${property[6]}</h4>
             <h4>${property[9]}</h4>
         </div>
         <div id="heart_icon">
-            <i class="fa fa-heart red-color"></i>
+            <i onclick="likeIcon()" class="far fa-heart"></i>
         </div>
       </div>
       `
@@ -77,7 +77,7 @@ function filterAll(){
 
 function redirectToInfo(id){
     localStorage.property_id = JSON.stringify(id)
-    window.location.replace("https://desolate-retreat-38151.herokuapp.com/property_det.html")
+    window.location.replace("http://127.0.0.1:5501/property_det.html")
 }
 
 function filterByPrice(){
@@ -115,4 +115,9 @@ function filterPropertybyPrice(){
     })
     console.log(arrProperties[0])
     // arrProperties.forEach((property)=>{console.log(property[3])})
+}
+
+function likeIcon(){
+    let container = document.getElementById("heart_icon")
+    container.innerHTML = `<i class="fa fa-heart red-color"></i>`
 }

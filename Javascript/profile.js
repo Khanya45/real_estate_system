@@ -20,7 +20,7 @@ function getLoggedUser(){
                 <h3>${loggedUser[6]}</h3>
             </div>
             <div class="btn_profile">
-                <button>Delete</button>
+                <button onclick="deleteUser()">Delete</button>
                 <button onclick="updateProfile()">Update</button>
                 <a href="/agent_signup.html"><button>New Account</button></a>
                 <a href="/user_signup.html"><button>Use Another Account</button></a>
@@ -55,10 +55,10 @@ function getLoggedUser(){
                 <h3>${loggedUser[3]}</h3>
             </div>
             <div class="btn_profile">
-                <button>Delete</button>
+                <button onclick="deleteUser()">Delete</button>
                 <button onclick="updateProfile()">Update</button>
-                <button>New Account</button>
-                <button>Use Another Account</button>
+                <a href="/agent_signup.html"><button>New Account</button></a>
+                <a href="/user_signup.html"><button>Use Another Account</button></a>
             </div>
         </div>
         `
@@ -302,3 +302,22 @@ function getProperty(){
 }
 
 getProperty();
+
+
+function deleteUser(){
+  if (loggedUser.length>4){
+    fetch("https://desolate-retreat-38151.herokuapp.com/delete-agent/" + loggedUser[0] + "/")
+    .then((res) => res.json())
+    .then((data) => console.log(data));
+    localStorage.removeItem("loggedUser");
+  }
+  else if (loggedUser.length=4){
+    fetch("https://desolate-retreat-38151.herokuapp.com/delete-user/" + loggedUser[0] + "/")
+    .then((res) => res.json())
+    .then((data) => console.log(data));
+    localStorage.removeItem("loggedUser");
+  }
+  else{
+    alert("Please log in")
+  }
+}
