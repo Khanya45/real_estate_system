@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+}
+.msg_container {
+    padding:5%;
+    font-family: "Work Sans", sans-serif;
+    color: rgb(141, 173, 147);
+    font-size: 36px;
+    line-height: 56px;
+    font-weight: 400;
+    height: 100%;
+    max-width: 1140px;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto;
+}

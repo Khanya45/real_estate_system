@@ -22,7 +22,7 @@ function sellProperty(){
     // console.log(loggedUser.length)
     localStorage.listed_property = JSON.stringify(new_property)
     if (loggedUser.length>4){
-        fetch("http://127.0.0.1:5002/add_property/", {
+        fetch("https://desolate-retreat-38151.herokuapp.com/add_property/", {
             method: "POST",
             body: localStorage.getItem("listed_property"),
             headers: {
@@ -31,7 +31,9 @@ function sellProperty(){
         })
         .then((res) => res.json())
         .then((json) => {
-            console.log(json.data)
+            if (json["status_code"] = 201){
+                window.location.replace("http://127.0.0.1:5501/agentlist.html")
+            }
           })
           
     }
@@ -45,7 +47,9 @@ function sellProperty(){
         })
         .then((res) => res.json())
         .then((json) => {
-            console.log(json.data)
+            if (json["status_code"] = 201){
+                window.location.replace("http://127.0.0.1:5501/agentlist.html")
+            }
           })
           
     }
@@ -53,4 +57,3 @@ function sellProperty(){
         alert("Please sign in or create a new account")
     }
 }
-
