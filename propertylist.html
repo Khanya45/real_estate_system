@@ -30,7 +30,7 @@
         <div class="filter_property">
             <h2>Filter By</h2>
             <hr>   
-            <div class="filter_price">
+            <!-- <div class="filter_price">
                 <div id="input_price">
                     <label>Price From</label><br>
                     <input>
@@ -39,17 +39,23 @@
                     <label>Price To</label><br>
                     <input>
                 </div>
-            </div>    
+            </div>     -->
             <div class="property_type">
                 <label>Property Type</label><br>
                 <input id="check" type="checkbox" value="house" checked >Houses<br>  
                 <input id="check" type="checkbox" value="flats&apartments" checked >Flats & Apartments<br>  
                 <input id="check" type="checkbox" value="townhouse" checked>Townhouse<br>  
             </div>
-            <button class="btn_filter" onclick="filterAll()">Apply Filter</button>
+            <button class="btn_filter" onclick="filterPropertyType()">Apply Filter</button>
             
         </div>
         <div class="property_container" >
+            <div class="sort">
+                <h3>Sort By:</h3>
+                <button>Newest</button>
+                <button>Lowest Price</button>
+                <button>Highest Price</button>
+            </div>
             <div class="property_card" onclick="redirectToInfo()">
                 <div class="img_property">
                     <img src="https://prppublicstore.blob.core.windows.net/live-za-images/property/1163/40/7881163/images/property-7881163-34782882_sd.jpg">
