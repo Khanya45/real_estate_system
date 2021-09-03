@@ -8,7 +8,7 @@ function send_email(){
     .then((json) => {
         let agent = json.data
         console.log(agent[1])
-        body = `Dear ${loggedUser[1]},\n
+        body = `
                 Does it seem like your home will never sell?\n
                 Few people truly understand the frustrations you face trying to sell your home. Perhaps you’re in between jobs and\n
                 need to start renting. Or maybe you want to buy your next home, but you feel paralyzed because you need to sell this home first.\n

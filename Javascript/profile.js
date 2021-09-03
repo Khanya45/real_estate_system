@@ -260,7 +260,8 @@ function getProperty(){
         .then((res) => res.json())
         .then((json) => {
           yourProperty = json.data
-          console.log(yourProperty)
+          localStorage.agentProperty = JSON.stringify(yourProperty)
+          // console.log(yourProperty)
           let container = document.querySelector(".property_container")
           container.innerHTML = ""
           yourProperty.forEach(property=>{
@@ -269,6 +270,11 @@ function getProperty(){
               <div class="img_property">
                   <img src="${property[7]}">
               </div>
+              <div class="btn_property">
+                <button onclick="showForm(${property[0]})">Update</button>
+                <button onclick="deleteProperty(${property[0]})">Delete</button>
+              </div>  
+            
             </div>
             `
           })
@@ -282,6 +288,7 @@ function getProperty(){
         .then((res) => res.json())
         .then((json) => {
           yourProperty = json.data
+          localStorage.userProperty = JSON.stringify(yourProperty)
           let container = document.querySelector(".property_container")
           if (yourProperty.length > 0){
             container.innerHTML = ""
@@ -340,5 +347,80 @@ function deleteUser(){
   else{
     alert("Please log in")
   }
-  
+}
+
+function showForm(property_id){
+  let container = document.querySelector(".form_container")
+  container.style.visibility = "visible";
+  properties = JSON.parse(localStorage.getItem("agentProperty"))
+  console.log(properties)
+  let propertyAgent = properties.find(property=>{
+    return property[0] == property_id
+  })
+  localStorage.propAgent = JSON.stringify(propertyAgent)
+  let inputs = document.getElementsByTagName("input")
+  let description = document.querySelector("textarea")
+  let property_type = document.getElementById("property_type")
+  let listing_type = document.getElementById("listing_type")
+  console.log(inputs[3])
+  inputs[0].value = propertyAgent[6]
+  inputs[1].value = propertyAgent[3]
+  inputs[2].value = propertyAgent[7]
+  if (propertyAgent[1] == "House"){
+    property_type.options[1].selected = true;
+  }
+  else if (propertyAgent[1] == "Townhouse"){
+    property_type.options[3].selected = true;
+  }
+  else{
+    property_type.options[2].selected = true;
+    }
+
+  if (propertyAgent[5] == "sale"){
+    listing_type.options[1].selected = true;
+  }
+  else{
+    listing_type.options[2].selected = true;
+    } 
+  description.value = propertyAgent[2]
+}
+
+function updateProperty(){
+  values = []
+  let propertyAgent = JSON.parse(localStorage.getItem("propAgent"))
+  let inputs = document.getElementsByTagName("input")
+  for (index=0;index<inputs.length;index++){
+      values.push(inputs[index].value)
+  }
+  option_one = document.getElementById("property_type")
+  option_two = document.getElementById("listing_type")
+  var property_type = option_one.options[option_one.selectedIndex].value
+  var listing_type = option_two.options[option_two.selectedIndex].value
+  let description = document.querySelector("textarea").value
+  let update_property = {
+      "property_type":property_type,
+      "listing_type":listing_type,
+      "description":description,
+      "price":parseInt(values[1]),
+      "address":values[0],
+      "image":values[2],
+  }
+  fetch("https://desolate-retreat-38151.herokuapp.com/edit-property/" + propertyAgent[0] + "/", {
+    method: "PUT",
+    body: JSON.stringify(update_property),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+  .then((response) => response.json())
+  .then((json) => {console.log(json)})
+}
+
+function deleteProperty(id){
+  fetch("https://desolate-retreat-38151.herokuapp.com/delete-agent/" + id + "/")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data)
+    })
+    getProperty()
 }

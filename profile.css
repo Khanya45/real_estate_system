@@ -129,3 +129,58 @@ body{
     display: flex;
     flex-direction: column;
 }
+
+.btn_property {
+    display: flex;
+    justify-content: space-between;
+}
+.btn_property button{
+    width:100%;
+    background-color: rgb(141, 173, 147);
+    border: none;
+    padding: 5px;
+  
+}
+.btn_property :first-child{
+    border-right: 1px solid gray;
+}
+
+/*  ========= OVERLAYER =========== */
+
+
+.form_container{
+    display: flex;
+    visibility: hidden;
+    flex-direction: column;
+    justify-content: center;
+    padding: 7%;
+    width:50%;
+    height: 95%;
+    border: 1px solid grey;
+}
+.form_container input{
+    padding: 5px;
+    outline: none;
+    margin-bottom: 10px;
+    width: 90%;
+}
+#property_type , #listing_type, .form_container button {
+    width: 90%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+.form_container textarea{
+    width: 90%;
+    height: 160px;
+    outline: none;
+}
+
+.form_container button{
+    margin-top: 10px;
+    background-color: #1f2421;
+    padding: 10px;
+    color: white;
+    border: none;
+}
+
+

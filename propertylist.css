@@ -112,3 +112,12 @@ body{
     background-color: rgb(141, 173, 147);
     border: none;
 }
+
+.filter_property button{
+    background: rgb(141, 173, 147);
+    border: none;
+    padding: 5px;
+    margin: 10px;
+    width:100%;
+    margin-left: 0;
+}
