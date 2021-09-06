@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affordability</title>
+    <link rel="stylesheet" href="/calculator.css">
+    <link rel="stylesheet" href="/landing.css">
+    <script
+      src="https://kit.fontawesome.com/cce18f0ce0.js"
+      crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+    <div class="main">
+        <div class="logo_name">
+          <h1>Find Property</h1>
+        </div>
+        <div class="top-bar">
+          <a href="/sellproperty.html">Sell</a>
+          <a href="#about_page">Affordability Calculator</a>
+          <a href="/profile.html"><i class="far fa-user-circle"></i></a>
+        </div>
+    </div>
+    <div class="sell_page">
+        <div class="header">
+            <h1>Affordability Calculator</h1>
+        </div>
+        <div class="affordabilityCalculatorForm">
+            <div class="calculatorContainer">
+                <div class="row">
+                    <form id="affordabilityCalculatorForm">
+                        <div class="formControl">
+                            <div class="label positionLeft">
+                                <label for="GrossIncome">Gross Income</label>
+                            </div>
+                            <div class="control">
+                                <span class="prefix">R</span>
+                                <div style="position: relative; display: inline-block;">
+                                    <input class="calcValue calcField" id="GrossIncome" value="0">
+                                    <span class="required" id="GrossIncomeRequired" style="display: none;">REQUIRED</span>
+                                </div>
+                                    <span class="suffix">pm</span>
+                               </div>
+                            </div>
+                        </form>  
+                        <div class="formControl">
+                            <div class="label positionLeft">
+                                <label for="NetIncome">Net Income</label>
+                            </div>
+                            <div class="control">
+                                <span class="prefix">R</span>
+                                <div style="position: relative; display: inline-block;">
+                                    <input class="calcValue" id="NetIncome">
+                                    <span class="required" id="NetIncomeRequired" style="display: none;">REQUIRED</span>
+                                </div>
+                                <span class="suffix">pm</span>
+                            </div>
+                        </div>
+                        <div class="formControl">
+                            <div class="label positionLeft">
+                                <label for="TotalExpenses">Total Expenses</label>
+                            </div>
+                            <div class="control">
+                                <span class="prefix">R</span>
+                                <div style="position: relative; display: inline-block;">
+                                    <input class="calcValue calcField" id="TotalExpenses" >
+                                    <span class="required" id="TotalExpensesRequired" style="display: none;">REQUIRED</span>
+                                </div>
+                                <span class="suffix">pm</span>
+                            </div>
+                        </div>
+                        <div class="formControl">
+                            <div class="label positionLeft">
+                                <label for="AffordabilityInterestRate">Interest Rate</label> *
+                            </div>
+                            <div class="control">
+                                <span class="prefix"></span>
+                                <div style="position: relative; display: inline-block;">
+                                    <input class="calcInterest calcField" id="AffordabilityInterestRate">
+                                    <span class="required" id="AffordabilityInterestRateRequired" style="display: none;">REQUIRED</span>
+                                </div>
+                                <span class="suffix">%</span>
+                            </div>
+                        </div>
+                        <div class="formControl">
+                            <div class="label positionLeft">
+                                <label for="AffordabilityInterestRate">Number of Years</label> *
+                            </div>
+                            <div class="control">
+                                <span class="prefix"></span>
+                                <div style="position: relative; display: inline-block;">
+                                    <input class="calcInterest calcField" id="AffordabilityInterestRate">
+                                    <span class="required" id="AffordabilityInterestRateRequired" style="display: none;">REQUIRED</span>
+                                </div>
+                                <span class="suffix">yrs</span>
+                            </div>
+                        </div>
+                        <div class="errorMessage" id="errorMessage">&nbsp;</div>
+                            <div class="formSubmit">
+                                <button type="button" id="affordCalculateButton" onclick="calculator()" class="calculateButton" data-view="AffordabilityCalculator">Calculate</button>
+                            </div>
+                            <div id="formSubmitting" style="display: none;">
+                                <span>Calculating result... </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="formResults" class="formResults">
+                    <div class="formResultContainer">
+                        <div class="resultContent">
+                            <div id="monthlyPaymentLabel" class="label">Monthly Repayment</div>
+                            <div id="monthlyPayment" class="value sponsoredColour">R <span id="affordMonthlyPaymentValue"> 0.00</span></div>
+                            <div id="maximumLoanLabel" class="label">Maximum Loan Available</div>
+                            <div id="maximumLoan" class="value sponsoredColour">R <span id="maximumLoanValue"> 0.00</span></div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+    <script src="/Javascript/calculator.js"></script>
+</body>
+</html>

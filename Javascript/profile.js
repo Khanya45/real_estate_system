@@ -298,6 +298,10 @@ function getProperty(){
                 <div class="img_property">
                     <img src="${property[7]}">
                 </div>
+                <div class="btn_property">
+                <button onclick="showForm(${property[0]})">Update</button>
+                <button onclick="deleteProperty(${property[0]})">Delete</button>
+              </div>  
               </div>
               `
             })
@@ -353,23 +357,24 @@ function showForm(property_id){
   let container = document.querySelector(".form_container")
   container.style.visibility = "visible";
   properties = JSON.parse(localStorage.getItem("agentProperty"))
-  console.log(properties)
+  
   let propertyAgent = properties.find(property=>{
     return property[0] == property_id
   })
+  // console.log(propertyAgent)
   localStorage.propAgent = JSON.stringify(propertyAgent)
   let inputs = document.getElementsByTagName("input")
   let description = document.querySelector("textarea")
   let property_type = document.getElementById("property_type")
   let listing_type = document.getElementById("listing_type")
-  console.log(inputs[3])
+  // console.log(description.value)
   inputs[0].value = propertyAgent[6]
   inputs[1].value = propertyAgent[3]
   inputs[2].value = propertyAgent[7]
-  if (propertyAgent[1] == "House"){
+  if (propertyAgent[1] == "house"){
     property_type.options[1].selected = true;
   }
-  else if (propertyAgent[1] == "Townhouse"){
+  else if (propertyAgent[1] == "townhouse"){
     property_type.options[3].selected = true;
   }
   else{
@@ -388,6 +393,7 @@ function showForm(property_id){
 function updateProperty(){
   values = []
   let propertyAgent = JSON.parse(localStorage.getItem("propAgent"))
+  console.log(propertyAgent)
   let inputs = document.getElementsByTagName("input")
   for (index=0;index<inputs.length;index++){
       values.push(inputs[index].value)
@@ -401,7 +407,7 @@ function updateProperty(){
       "property_type":property_type,
       "listing_type":listing_type,
       "description":description,
-      "price":parseInt(values[1]),
+      "price":values[1],
       "address":values[0],
       "image":values[2],
   }

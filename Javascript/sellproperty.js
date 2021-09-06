@@ -9,7 +9,14 @@ function sellProperty(){
     var property_type = option_one.options[option_one.selectedIndex].value
     var listing_type = option_two.options[option_two.selectedIndex].value
     let description = document.querySelector("textarea").value
+    let getAgent= confirm("Do you need an agent");
+    if (getAgent == true) {
+        answer = "Yes"
+    } else {
+        answer = "No"
+    } 
     let new_property = {
+        "needAgent": answer,
        "property_type":property_type,
        "listing_type":listing_type,
        "description":description,
@@ -19,8 +26,8 @@ function sellProperty(){
     }
     console.log(new_property)
     loggedUser = JSON.parse(localStorage.getItem("loggedIn"))
-    // console.log(loggedUser.length)
     localStorage.listed_property = JSON.stringify(new_property)
+   
     if (loggedUser.length>4){
         fetch("https://desolate-retreat-38151.herokuapp.com/add_property/", {
             method: "POST",
@@ -57,3 +64,5 @@ function sellProperty(){
         alert("Please sign in or create a new account")
     }
 }
+
+

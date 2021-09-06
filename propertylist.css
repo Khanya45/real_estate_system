@@ -79,11 +79,12 @@ body{
 .property_info{
     display: flex;
     flex-direction: column;
-    width:70%;
+    width:190%;
     height: 100%;
     padding: 40px;
     padding-bottom: 0;
     padding-top: 20px;
+    padding-right:10px ;
 }
 .property_info h4{
     margin-bottom: 30px;

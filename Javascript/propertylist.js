@@ -84,29 +84,54 @@ function likeIcon(){
 
 function sortByHighPrice(){
     let properties = JSON.parse(localStorage.getItem("filteredPropertyType"));
-    let sortedArray = properties.sort(function(a, b) {
-        return b[3] - a[3];
-      });
-      console.log(sortedArray)
-      displayProperty(sortedArray)
+    if (filteredBySuburb.length > properties.length) {
+        let sortedArray = filteredBySuburb.sort(function(a, b) {
+            return b[3] - a[3];
+          });
+          console.log(sortedArray)
+          displayProperty(sortedArray)
+    }else{
+        let sortedArray = properties.sort(function(a, b) {
+            return b[3] - a[3];
+          });
+          console.log(sortedArray)
+          displayProperty(sortedArray)
+    }
 }
 
 function sortByLowPrice(){
     let properties = JSON.parse(localStorage.getItem("filteredPropertyType"));
-    let sortedArray = properties.sort(function(a, b) {
-        return a[3] - b[3];
-      });
-      console.log(sortedArray)
-      displayProperty(sortedArray)
+    // let properties = JSON.parse(localStorage.getItem("filteredPropertyType"));
+    if (filteredBySuburb.length > properties.length) {
+        let sortedArray = filteredBySuburb.sort(function(a, b) {
+            return a[3] - b[3];
+        });
+        console.log(sortedArray)
+        displayProperty(sortedArray)
+    }else{
+        let sortedArray = properties.sort(function(a, b) {
+            return a[3] - b[3];
+        });
+        console.log(sortedArray)
+        displayProperty(sortedArray)
+    }
 }
 
 function sortByDate(){
     let properties = JSON.parse(localStorage.getItem("filteredPropertyType"));
-    let sortedArray = properties.sort(function(a, b) {
-        return a[9] - b[9];
-      });
-      console.log(sortedArray)
-      displayProperty(sortedArray)
+    if (filteredBySuburb.length > properties.length) {
+        let sortedArray = filteredBySuburb.sort(function(a, b) {
+            return a[9] - b[9];
+        });
+        console.log(sortedArray)
+        displayProperty(sortedArray)
+    }else{
+        let sortedArray = properties.sort(function(a, b) {
+            return a[9] - b[9];
+        });
+        console.log(sortedArray)
+        displayProperty(sortedArray)
+    }
 }
 
 // fetch("https://desolate-retreat-38151.herokuapp.com/get-agent-info/1/", {
