@@ -43,7 +43,23 @@ loggedUser = JSON.parse(localStorage.getItem("loggedIn"))
 
 
 function send_email(id){
-    window.location.replace("http://127.0.0.1:5501/Javascript/agentMsg.html")
-    localStorage.agent_id = JSON.stringify(id)
+    new_property = JSON.parse(localStorage.getItem("listed_property"))
+    new_property.agent_id = id
+    new_property.user_id = loggedUser[0]
+    fetch("http://127.0.0.1:5002/add_property/", {
+        method: "POST",
+        body: JSON.stringify(new_property),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        },
+    })
+    .then((res) => res.json())
+    .then((json) => {
+        if (json["status_code"] = 201){
+            window.location.replace("http://127.0.0.1:5501/Javascript/agentMsg.html")
+            localStorage.agent_id = JSON.stringify(id)
+        }
+      })
+    
 }
 

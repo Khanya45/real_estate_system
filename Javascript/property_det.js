@@ -106,16 +106,17 @@ function send_email(id){
   }
   let textarea = document.getElementById("text-box").value
   body = `I, ${info[0]}\n ${textarea} \n Here my contacts:\n Mobile:${info[1]}\n email:${info[2]}`
-  // console.log(JSON.stringify(body))
+  let email = {"email":info[2]}
+  console.log(email)
   fetch("https://desolate-retreat-38151.herokuapp.com/send-email/"+id+"/"+body+"/", {
         method: "POST",
-        body: info[2],
+        body: JSON.stringify(email),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
       },
         })
     .then((res) => res.json())
     .then((response) => {
-      console.log(response.data)
+      console.log(response.message)
     })
 }

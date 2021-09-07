@@ -16,7 +16,6 @@ function sellProperty(){
         answer = "No"
     } 
     let new_property = {
-        "needAgent": answer,
        "property_type":property_type,
        "listing_type":listing_type,
        "description":description,
@@ -29,9 +28,10 @@ function sellProperty(){
     localStorage.listed_property = JSON.stringify(new_property)
    
     if (loggedUser.length>4){
-        fetch("https://desolate-retreat-38151.herokuapp.com/add_property/", {
+        new_property.agent_id = loggedUser[0]
+        fetch("http://127.0.0.1:5002/add_property_agent/", {
             method: "POST",
-            body: localStorage.getItem("listed_property"),
+            body: JSON.stringify(new_property),
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
             },
@@ -39,30 +39,59 @@ function sellProperty(){
         .then((res) => res.json())
         .then((json) => {
             if (json["status_code"] = 201){
-                window.location.replace("http://127.0.0.1:5501/agentlist.html")
+                window.location.replace("http://127.0.0.1:5501/index.html")
+            }
+            else{
+                alert("Could not add your property")
             }
           })
           
     }
     else if (loggedUser.length==4){
-        fetch("https://desolate-retreat-38151.herokuapp.com/add_property/", {
-            method: "POST",
-            body: localStorage.getItem("listed_property"),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8",
-            },
-        })
-        .then((res) => res.json())
-        .then((json) => {
-            if (json["status_code"] = 201){
-                window.location.replace("http://127.0.0.1:5501/agentlist.html")
-            }
-          })
-          
+        if (answer == "No"){
+            new_property.user_id = loggedUser[0]
+            fetch("http://127.0.0.1:5002/add_property_user/", {
+                method: "POST",
+                body: localStorage.getItem("listed_property"),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                },})
+            .then((res) => res.json())
+            .then((json) => {
+                if (json["status_code"] = 201){
+                    window.location.replace("http://127.0.0.1:5501/index.html")
+                }
+                else{
+                    alert("Could not add your property")
+                }
+            })
+        }
+        else{
+            window.location.replace("http://127.0.0.1:5501/agentlist.html")
+        }
     }
     else{
         alert("Please sign in or create a new account")
     }
 }
 
+
+//  if (loggedUser.length==4){
+//     if (new_property["needAgent"] == "Yes"){
+//         new_property.agent_id = 6
+//     }
+//     fetch("https://desolate-retreat-38151.herokuapp.com/add_property/", {
+//         method: "POST",
+//         body: localStorage.getItem("listed_property"),
+//         headers: {
+//             "Content-type": "application/json; charset=UTF-8",
+//         },
+//     })
+//     .then((res) => res.json())
+//     .then((json) => {
+//         if (json["status_code"] = 201){
+//             window.location.replace("http://127.0.0.1:5501/agentlist.html")
+//         }
+//       })
+// }
 
