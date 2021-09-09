@@ -29,14 +29,20 @@ function sellProperty(){
    
     if (loggedUser.length>4){
         new_property.agent_id = loggedUser[0]
-        fetch("http://127.0.0.1:5002/add_property_agent/", {
+        fetch("https://desolate-retreat-38151.herokuapp.com/add_property_agent/", {
             method: "POST",
             body: JSON.stringify(new_property),
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
             },
         })
-        .then((res) => res.json())
+        .then((response) => {
+            if (response.status >= 200 && response.status <= 299) {
+                return response.json();
+              } else {
+                throw Error(response.statusText);
+              }
+        })
         .then((json) => {
             if (json["status_code"] = 201){
                 window.location.replace("http://127.0.0.1:5501/index.html")
@@ -44,19 +50,27 @@ function sellProperty(){
             else{
                 alert("Could not add your property")
             }
+          }).catch(error => {
+            alert(error)
           })
           
     }
     else if (loggedUser.length==4){
         if (answer == "No"){
             new_property.user_id = loggedUser[0]
-            fetch("http://127.0.0.1:5002/add_property_user/", {
+            fetch("https://desolate-retreat-38151.herokuapp.com/add_property_user/", {
                 method: "POST",
                 body: localStorage.getItem("listed_property"),
                 headers: {
                     "Content-type": "application/json; charset=UTF-8",
                 },})
-            .then((res) => res.json())
+            .then((response) => {
+                if (response.status >= 200 && response.status <= 299) {
+                    return response.json();
+                  } else {
+                    throw Error(response.statusText);
+                  }
+            })
             .then((json) => {
                 if (json["status_code"] = 201){
                     window.location.replace("http://127.0.0.1:5501/index.html")
@@ -64,7 +78,9 @@ function sellProperty(){
                 else{
                     alert("Could not add your property")
                 }
-            })
+            }).catch(error => {
+                alert(error)
+              })
         }
         else{
             window.location.replace("http://127.0.0.1:5501/agentlist.html")

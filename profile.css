@@ -15,6 +15,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 .container {
     height: 100%;
@@ -182,5 +183,13 @@ body{
     color: white;
     border: none;
 }
-
+.user_form {
+    display: flex;
+    flex-direction: column;
+}
+.user_form button{
+    background-color: white;
+    padding: 5px;
+    width: 200px;
+}
 

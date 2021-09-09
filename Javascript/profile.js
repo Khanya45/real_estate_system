@@ -30,7 +30,13 @@ function getLoggedUser(){
         fetch("https://desolate-retreat-38151.herokuapp.com/property-by-agent/"+parseInt(loggedUser[0])+"/", {
         method: "get",
         })
-        .then((res) => res.json())
+        .then((response) => {
+          if (response.status >= 200 && response.status <= 299) {
+            return response.json();
+          } else {
+            throw Error(response.statusText);
+          }
+        })
         .then((json) => {
             let container = document.querySelector(".property_container")
             container.innerHTML = ""
@@ -38,6 +44,8 @@ function getLoggedUser(){
                     <div class="img_property">
                         <img src="${loggedUser[3]}">
                     </div>`
+        }).catch(error => {
+          alert(error)
         })
        
         
@@ -65,7 +73,13 @@ function getLoggedUser(){
         fetch("https://desolate-retreat-38151.herokuapp.com/property-by-user/"+loggedUser[0]+"/", {
         method: "get",
         })
-        .then((res) => res.json())
+        .then((response) => {
+          if (response.status >= 200 && response.status <= 299) {
+            return response.json();
+          } else {
+            throw Error(response.statusText);
+          }
+        })
         .then((json) => {
             let container = document.querySelector(".property_container")
             container.innerHTML = ""
@@ -73,6 +87,8 @@ function getLoggedUser(){
                     <div class="img_property">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4MpWMpLfpTWJ0pZNG2BecwCWZ6rOLYqg_0F4wJAisdO3lNDc6XlATOswUBveGK-EbpyI&usqp=CAU">
                     </div>`
+        }).catch(error=>{
+          alert(error)
         })
         
     }
@@ -92,7 +108,7 @@ function updateProfile(){
     
     if (loggedUser.length==4){
         container.innerHTML = `
-        <div class="form">
+        <div class="form user_form">
             <input
               class="input"
               type="text"
@@ -111,7 +127,7 @@ function updateProfile(){
               required
               placeholder="password"
             />
-          <input onclick="updatedUser()" value="submit" />
+          <button onclick="updatedUser()" value="submit" >Update</button>
         </div>
         `
           var inputs = document.getElementsByTagName("input");
@@ -203,7 +219,13 @@ function updatedUser() {
             "Content-type": "application/json; charset=UTF-8",
           },
         })
-          .then((response) => response.json())
+          .then((response) => {
+          if (response.status >= 200 && response.status <= 299) {
+            return response.json();
+          } else {
+            throw Error(response.statusText);
+          }
+        })
           .then((json) => {
             if (json.content === "successful") {
               alert("Updated successfully.Please log in to see your updates");
@@ -215,6 +237,8 @@ function updatedUser() {
             } else {
               alert("update not successful");
             }
+          }).catch(error => {
+            alert(error)
           });
     }
     else if (loggedUser.length>4){
@@ -236,7 +260,13 @@ function updatedUser() {
               "Content-type": "application/json; charset=UTF-8",
             },
           })
-            .then((response) => response.json())
+            .then((response) => {
+              if (response.status >= 200 && response.status <= 299) {
+                return response.json();
+              } else {
+                throw Error(response.statusText);
+              }
+            })
             .then((json) => {
               if (json.content === "successful") {
                 alert("Updated successfully. Please log in to see your updates");
@@ -248,6 +278,8 @@ function updatedUser() {
               } else {
                 alert("update not successful");
               }
+            }).catch(error => {
+              alert(error)
             });
     }
   }
@@ -257,7 +289,13 @@ function getProperty(){
     fetch("https://desolate-retreat-38151.herokuapp.com/property-by-agent/"+loggedUser[0]+"/", {
         method: "get",
         })
-        .then((res) => res.json())
+        .then((response) => {
+          if (response.status >= 200 && response.status <= 299) {
+            return response.json();
+          } else {
+            throw Error(response.statusText);
+          }
+        })
         .then((json) => {
           yourProperty = json.data
           localStorage.agentProperty = JSON.stringify(yourProperty)
@@ -279,13 +317,21 @@ function getProperty(){
             `
           })
 
+    }).catch(error => {
+      alert(error)
     })
   }  
   else if(loggedUser.length == 4){
     fetch("https://desolate-retreat-38151.herokuapp.com/property-by-user/"+loggedUser[0]+"/", {
         method: "get",
         })
-        .then((res) => res.json())
+        .then((response) => {
+          if (response.status >= 200 && response.status <= 299) {
+            return response.json();
+          } else {
+            throw Error(response.statusText);
+          }
+        })
         .then((json) => {
           yourProperty = json.data
           localStorage.userProperty = JSON.stringify(yourProperty)
@@ -323,6 +369,8 @@ function getProperty(){
               
             `
           }
+    }).catch(error => {
+      alert(error)
     })
   }
   else{
@@ -337,14 +385,32 @@ getProperty();
 function deleteUser(){
   if (loggedUser.length>4){
     fetch("https://desolate-retreat-38151.herokuapp.com/delete-agent/" + loggedUser[0] + "/")
-    .then((res) => res.json())
-    .then((data) => console.log(data));
+    .then((response) => {
+      if (response.status >= 200 && response.status <= 299) {
+        return response.json();
+      } else {
+        throw Error(response.statusText);
+      }
+    })
+    .then((data) => console.log(data))
+    .catch(error => {
+      alert(error)
+    });
     localStorage.removeItem("loggedUser");
   }
   else if (loggedUser.length=4){
     fetch("https://desolate-retreat-38151.herokuapp.com/delete-user/" + loggedUser[0] + "/")
-    .then((res) => res.json())
-    .then((data) => console.log(data));
+    .then((response) => {
+      if (response.status >= 200 && response.status <= 299) {
+        return response.json();
+      } else {
+        throw Error(response.statusText);
+      }
+    })
+    .then((data) => console.log(data))
+    .catch(error => {
+      alert(error)
+    });
     localStorage.removeItem("loggedIn");
     getLoggedUser()
   }
@@ -418,15 +484,57 @@ function updateProperty(){
       "Content-type": "application/json; charset=UTF-8",
     },
   })
-  .then((response) => response.json())
-  .then((json) => {console.log(json)})
+  .then((response) => {
+  if (response.status >= 200 && response.status <= 299) {
+    return response.json();
+  } else {
+    throw Error(response.statusText);
+  }
+})
+  .then((json) => {
+      console.log(json)
+    })
+  .catch(error => {
+    alert(error)
+  })
 }
 
 function deleteProperty(id){
-  fetch("https://desolate-retreat-38151.herokuapp.com/delete-agent/" + id + "/")
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data)
+  if (loggedUser.length > 4){
+    fetch("https://desolate-retreat-38151.herokuapp.com/delete-agent/" + id + "/")
+      .then((response) => {
+      if (response.status >= 200 && response.status <= 299) {
+        return response.json();
+      } else {
+        throw Error(response.statusText);
+      }
     })
-    getProperty()
+      .then((data) => {
+        console.log(data)
+      }).catch(error => {
+        alert(error)
+      })
+      window.location.reload()
+      getProperty()
+  }else if (loggedUser.length == 4){
+    fetch("https://desolate-retreat-38151.herokuapp.com/delete-user/" + id + "/")
+      .then((response) => 
+      (response) => {
+        if (response.status >= 200 && response.status <= 299) {
+          return response.json();
+        } else {
+          throw Error(response.statusText);
+        }
+      })
+      .then((data) => {
+        console.log(data)
+      }).catch(error => {
+        alert(error)
+      })
+      window.location.reload()
+      getProperty()
+  }
+  else{
+    alert("Please log in")
+  }
 }

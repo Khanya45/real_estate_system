@@ -7,6 +7,7 @@
 body {
     /* background-color: #333; */
     /* background-color: #1f2421; */
+    /* z-index: 1; */
     height: 100vh;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   }
@@ -39,6 +40,10 @@ body {
     width: 100%;
     padding-left: 5%;
     padding-right: 5%;
+    position:sticky;
+    top: 0;
+    left: 0;
+    right: 0;
   }
   
   .logo_name h1 {
@@ -132,6 +137,7 @@ form button{
     align-items: center;
 }
 .list_suburbs h1{
+    margin: 30px;
     margin-top: 50px;
 }
 
@@ -149,28 +155,39 @@ form button{
     width:100%;
     justify-content: center;
     align-items: center;
+    padding:6%;
+    padding-top: 1%;
 }
 
 .list a{
     margin-bottom: 30px;
 }
+.copyright {
+    text-align: center;
+    font-size: .75rem;
+    height: 40px;
+    line-height: 60px;
+    /* margin-top: 75px; */
+    color: white;
+    /* width: 100%; */
+    background: #1f2421;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* z-index: -1; */
+}
 
-/*
-<div class="cities">
-    <div id="list list_1">
-        <a>Woodstock</a>
-        <a>Observatory</a>
-        <a>Waterfront</a>
-    </div>
-    <div class="list list_2">
-        <a>Gardens</a>
-        <a>City Bowl</a>
-        <a>Bo-Kaap</a>
-    </div>
-    <div class="list list_3">
-        <a>De Waterkant</a>
-        <a>Fish Hoek</a>
-        <a>Simon's Town</a>
-    </div>
-</div>
- */
+@media screen and (max-width: 507px) {
+    .top-bar {
+      display: none;
+    }
+    .logo_name{
+        display: flex;
+        width: 100%;
+        justify-content: end;
+    }
+    .form_container{
+        width:90%;
+    }
+  }

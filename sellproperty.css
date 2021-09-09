@@ -21,6 +21,7 @@ body{
     justify-content: center;
     align-items: center;
     margin: 5%;
+    margin-bottom: 3%;
 }
 .container{
     width: 100%;
@@ -28,6 +29,7 @@ body{
     display: flex;
     justify-content: center;
     align-content: center;
+    margin-bottom: 50px;
 }
 .form_container{
     display: flex;
@@ -44,7 +46,7 @@ body{
     margin-bottom: 10px;
     width: 90%;
 }
-#property_type , #listing_type, button {
+#property_type , #listing_type, .form_container button {
     width: 90%;
     padding: 5px;
     margin-bottom: 10px;
@@ -62,17 +64,3 @@ body{
     color: white;
     border: none;
 }
-/* 
-<select id="property_type">
-    <option >Property Type...</option>
-    <option value="house">House</option>
-    <option value="flat&apartment">Flat & Apartment</option>
-    <option value="townhouse">Townhouse</option>
-</select>
-<select id="listing_type">
-    <option value="listing-type">Listing-type...</option>
-    <option value="sale">Sale</option>
-    <option value="rental">Rental</option>
-</select>
-<textarea placeholder="write the property description here..."></textarea>
-*/

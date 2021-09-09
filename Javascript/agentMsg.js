@@ -4,7 +4,13 @@ function send_email(){
     fetch("https://desolate-retreat-38151.herokuapp.com/get-agent-info/"+agent_id+"/", {
         method: "get",
         })
-    .then((res) => res.json())
+    .then((response) => {
+        if (response.status >= 200 && response.status <= 299) {
+            return response.json();
+          } else {
+            throw Error(response.statusText);
+          }
+    })
     .then((json) => {
         let agent = json.data
         console.log(agent[1])
@@ -21,7 +27,9 @@ function send_email(){
                 ${agent[0][4]}` 
         let container = document.querySelector("p")
         container.innerHTML = `<p>${body}</p>`
-    })
+    }).catch(error => {
+        alert(error)
+      })
 }
 
 send_email();

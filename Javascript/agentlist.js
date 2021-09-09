@@ -3,7 +3,13 @@ function displayAgents(){
     fetch("https://desolate-retreat-38151.herokuapp.com/get-agents/", {
         method: "get",
         })
-        .then((res) => res.json())
+        .then((response) => {
+            if (response.status >= 200 && response.status <= 299) {
+              return response.json();
+            } else {
+              throw Error(response.statusText);
+            }
+        })
         .then((json) => {
             arrAgents= json.data
             console.log(arrAgents)
@@ -35,7 +41,9 @@ function displayAgents(){
                         </div>
                     </div>  `})
             }) 
-        })
+        }).catch(error => {
+            alert(error)
+          })
 }   
 
 displayAgents();
@@ -53,12 +61,20 @@ function send_email(id){
             "Content-type": "application/json; charset=UTF-8",
         },
     })
-    .then((res) => res.json())
+    .then((response) => {
+        if (response.status >= 200 && response.status <= 299) {
+            return response.json();
+          } else {
+            throw Error(response.statusText);
+          }
+    })
     .then((json) => {
         if (json["status_code"] = 201){
             window.location.replace("http://127.0.0.1:5501/Javascript/agentMsg.html")
             localStorage.agent_id = JSON.stringify(id)
         }
+      }).catch(error => {
+        alert(error)
       })
     
 }

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/landing.css" />
+    <link rel="stylesheet" href="/navbar.css">
     <title>Document</title>
     <script
       src="https://kit.fontawesome.com/cce18f0ce0.js"
@@ -21,6 +22,29 @@
           <a href="/calculator.html">Affordability Calculator</a>
           <a href="/profile.html"><i class="far fa-user-circle"></i></a>
         </div>
+        <ul class="navbar-links">
+          <li class="navbar-link">
+            <a href="/index.html" class="navbar-anchor">HOME</a>
+          </li>
+          <li class="navbar-link">
+            <a href="/agent_signup.html" class="navbar-anchor">SIGN UP</a>
+          </li>
+          <li class="navbar-link">
+            <a href="/profile.html" class="navbar-anchor">Profile</a>
+          </li>
+          <li class="navbar-link">
+            <a href="/user_signup.html" class="navbar-anchor">Sign In</a>
+          </li>
+          <li class="navbar-link">
+            <a href="/sellproperty.html" class="navbar-anchor">Sell Property</a>
+          </li>
+          <li class="navbar-link">
+            <a href="/calculator.html" class="navbar-anchor">Affordability Calculator</a>
+          </li>
+        </ul>
+        <button class="navbar-button" onclick="toggleNavbar()">
+          <i class="fas fa-bars"></i>
+        </button>
     </div>
     <div class="landing_page">
         <div class="search_property">
@@ -55,8 +79,12 @@
                 </div>
             </div>
         </div>
+        <div class="copyright">
+          Copyright © Find Property South Africa (Pty) Ltd. 2021. All Rights Reserved.
+      </div>
     </div>
 
   <script src="/Javascript/dynamic.js"></script>
+  <script src="/navbar.js"></script>
   </body>
 </html>

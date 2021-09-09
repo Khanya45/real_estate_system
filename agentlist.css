@@ -29,7 +29,7 @@ body{
 }
 
 .agent_container {
-    width: 50%;
+    width: 55%;
     height: 100vh;
     margin-top: 10%;
 }
@@ -41,7 +41,7 @@ body{
     
 }
 .agent_img img{
-    width: 270px;;
+    width: 100%;
     height: 100%;
 }
 .agent_info {
@@ -69,20 +69,19 @@ body{
     color: white;
     border: none;
 }
-/* 
-<div class="agent_list">
-        <div class="agent_container">
-            <div class="agent_card">
-                <div class="agent_img">
-                    <img>
-                </div>
-                <div class="agent_info">
-                    <h3>Agent's Fullname</h3>
-                    <div class="agent_listings">
-                        <h3>Sale listings:0</h3>
-                        <h3>Rental listings:0</h3>
-                    </div>
-                    <h3>Location</h3>
-                    <h3>Estate Agent</h3>
-                    <button class="get_agent_btn">Get Agent</button>
-*/
+.agent_img{
+    width: 50%;
+    min-width: 173px;
+}
+
+@media screen and (max-width: 776px) {
+    .agent_card{
+        flex-direction: column;
+    }
+    .agent_img{
+        width: 100%;
+    }
+    .agent_container{
+        width:70%;
+    }
+  }  

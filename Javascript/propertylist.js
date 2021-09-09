@@ -25,9 +25,9 @@ function displayProperty(arrProperty){
             <img src="${property[7]}">
         </div>
         <div class="property_info" onclick="redirectToInfo(${property[0]})">
-            <h4>${property[1]}</h4>
+            <h4>${property[1].trim().slice(6, property[1].length)}</h4>
             <h4>R${property[3]}</h4>
-            <h4>${property[6]}</h4>
+            <h4>${property[6].trim().slice(0, 20)}...</h4>
             <h4>${property[9]}</h4>
         </div>
         <div id="heart_icon">

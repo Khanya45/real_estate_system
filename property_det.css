@@ -45,7 +45,7 @@ body{
 .call_agent{
     border: 1px solid black;
     padding:5%;
-    height:460px;
+    height:300px;
     width:100%;
     display: flex;
     /* justify-content: center; */
@@ -60,7 +60,7 @@ body{
 }
 .contact_agent{
     width: 100%;
-
+    min-width: 207px;
 }
 
 .call_agent button{
@@ -70,36 +70,6 @@ body{
     border-radius: 10px;
 }
 
-/* 
-<div class="contact_agent">
-            <div class="call_agent">
-                <img src="https://i.postimg.cc/cL0FNSc3/agent1.jpg">
-                <h3>Name & Surname</h3>
-                <h3>Agent</h3>
-                <h3>Estate Agent name</h3>
-                <button>Call Agent</button>
-            </div>
-            <div class="email_agent">
-                <h2>Contact Agent</h2>
-                <form
-                    class="contact-form"
-                    action="https://formspree.io/f/xzbyzobo"
-                    method="POST"
-                >
-                <div id="heading">
-                    <label>Contact Me</label>
-                </div>
-                <div>
-                    <input
-                        type="text"
-                        required
-                        placeholder="Enter your fullname"
-                        class="contact-info"
-                    />
-                    </label>
-                </div>
-                <div>
-         */
 .contact-form{
     width:100%;
     display: flex;
@@ -137,3 +107,9 @@ body{
     align-content: center;
     justify-content: center;
 }         
+
+@media screen and (max-width:500px) {
+    .property_selected{
+        flex-direction: column;
+    }
+}

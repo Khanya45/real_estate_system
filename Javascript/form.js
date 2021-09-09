@@ -31,7 +31,12 @@ newUser = [];
 function agent_signUp(){
   let signedUp = {}
   let agentInputs = document.getElementsByTagName("input")
-  if (agentInputs.length=10){
+  let valid = validateForms(agentInputs[0].value, agentInputs[1].value, agentInputs[2].value, agentInputs[3].value, agentInputs[5].value)
+  let validEmail = validateEmail(agentInputs[5].value)
+  let validateNumber = validateNumbers(agentInputs[4].value)
+  console.log(valid)
+  console.log(validateNumber)
+  if (agentInputs.length>=7 && valid == true && validEmail == true && validateNumber == true){
     signedUp ={
       "fullname":agentInputs[0].value,
       "estate_agent":agentInputs[1].value,
@@ -49,15 +54,22 @@ function agent_signUp(){
       "Content-type": "application/json; charset=UTF-8",
     },
      })
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.status >= 200 && response.status <= 299) {
+        return response.json();
+      } else {
+        throw Error(response.statusText);
+      }
+    })
     .then((json) => {
       if (json["status_code"] == 201 ){
         localStorage.loggedIn = user
         window.location.replace("http://127.0.0.1:5501/index.html")
         alert("Please sign in after sign up")
       } 
-    }
-    )
+    }).catch(error => {
+      alert(error)
+    })
   }else{
     alert("Fill all the info required")
   }
@@ -70,18 +82,23 @@ function user_signUp(){
     "email":agentInputs[8].value,
     "password":agentInputs[9].value
   }
-  console.log(signedUp)
-  console.log(validateForms(signedUp["fullname"], signedUp["email"], signedUp["password"]))
-  if (signedUp.length=3){
+  let valid = validateForms(signedUp["fullname"], signedUp["email"], signedUp["password"])
+  if (signedUp.length=3 || valid == true){
     user = JSON.stringify(signedUp)
-    fetch("http://127.0.0.1:5003/user-registration/", {
+    fetch("https://desolate-retreat-38151.herokuapp.com/user-registration/", {
       method: "POST",
       body: user,
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
     })
-    .then((response) => response.json())
+    .then((response) => {
+      if (response.status >= 200 && response.status <= 299) {
+        return response.json();
+      } else {
+        throw Error(response.statusText);
+      }
+    })
     .then((json) => {
       console.log(json)
       if (json["status_code"] == 201 ){
@@ -89,14 +106,14 @@ function user_signUp(){
         window.location.replace("http://127.0.0.1:5501/index.html")
         alert("Please sign in after sign up")
       } 
-    }
-    )
+    }).catch(error => {
+      alert(error)
+    })
   }
   else{
     alert("Fill all the info required")
   }
 }
-
 // ===========================================  SIGNIN PAGE FOR USER & AGENT   ==================================================
 
 
@@ -106,7 +123,13 @@ function signIn(){
   fetch("https://desolate-retreat-38151.herokuapp.com/get-users/", {
         method: "get",
         })
-  .then((res) => res.json())
+  .then((response) => {
+    if (response.status >= 200 && response.status <= 299) {
+      return response.json();
+    } else {
+      throw Error(response.statusText);
+    }
+  })
   .then((json) => {
     users = json.data
     for (index = 0; index < inputs.length; ++index) {
@@ -140,39 +163,84 @@ function signIn(){
         })
         
       }
+  }).catch(error => {
+    alert(error)
   })
 }
 
 
 // ========================= DATA VALIDATION =============================
+// function myFunction() {
+//   const message = document.getElementById("p01");
+//   message.innerHTML = "";
+//   let x = document.getElementById("demo").value;
+//   try {
+//     if(x == "") throw "empty";
+//     if(isNaN(x)) throw "not a number";
+//     x = Number(x);
+//     if(x < 5) throw "too low";
+//     if(x > 10) throw "too high";
+//   }
+//   catch(err) {
+//     message.innerHTML = "Input is " + err;
+//   }
+// }
+
+// function validateForms(){
+//   for (index=0;index<arguments.length;index++){
+//     if (isNaN(arguments[index])== false && arguments[index].trim()==null && arguments[index].trim()==""){
+//       return false
+//     }
+//     else{
+//       return true
+//     }
+//   }
+// }
 
 
 function validateForms(){
   for (index=0;index<arguments.length;index++){
-    if (isNaN(arguments[index]) || arguments[index]==null || arguments[index]==""){
+    if (isNaN(arguments[index])== false){
       return false
+    }
+    else if(arguments[index].trim()==null){
+      return false
+    }
+    else if(arguments[index].trim()==""){
+      return false
+    }
+    else{
+      return true
     }
   }
 }
-
-console.log(validateForms("khanya", "Gope", 78, "khanyalake", 19, "2021", "124 loop street"));
 
 
 function validateEmail(email){
   let atpos=email.indexOf("@");  
   let dotpos=email.lastIndexOf(".");  
-  if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length){  
+  if (atpos<1 || dotpos<atpos+2 || dotpos+2>=atpos.length){  
     alert("Please enter a valid e-mail address");  
     return false;  
-    }  
+  }
+  else{
+    return true
+  }  
 }  
-console.log(validateEmail("khanyagope"))
+// console.log(validateEmail("khanyagope"))
 
 function validateNumbers(){
   for (index=0;index<arguments.length;index++){
-    if (isNaN(arguments[index]) || arguments[index]==null || arguments[index]==""){
-      alert("Please enter a valid values"); 
+    if (isNaN(parseInt(arguments[index]))){
+      alert("Enter a valid mobile")
+      return false; 
+    }else if (parseInt(arguments[index].trim())==null){
+      return false; 
+    }else if(parseInt(arguments[index].trim())==""){
       return false
+    }
+    else{
+      return true
     }
   }
 }
