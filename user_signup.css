@@ -7,13 +7,7 @@ body {
   font-family: sens-serif;
   height: 100vh;
   background-color: #1f2421;
-}
-.container{
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  height: 100%;
-  width: 100%;
+  overflow: hidden;
 }
 .agent_form {
   display: flex;
@@ -23,21 +17,32 @@ body {
   background-color: #1f2421;
   margin-top: 50px;
   flex-direction: column;
+  /* overflow: hidden; */
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
+  width: 100%;
+  /* overflow: hidden; */
+}
+
 .form {
   width: 35%;
   padding: 2%;
   min-width: 240px;
+  height: 35%;
   padding-bottom: 0;
-  position: absolute;
   background: rgb(141, 173, 147);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   text-align: center;
   border-radius: 12px;
-  height:fit-content;
+  /* position: relative;
+  z-index: -1; */
 }
-
 
 .form .tab-content {
   padding: 20px;
@@ -47,9 +52,8 @@ body {
   margin: 10px 0px;
 }
 .form .tab-content .form-element input {
-  border: 0;
-  background: none;
-  display: block;
+  background: transparent;
+  /* display: block; */
   /* margin: 20px auto; */
   border: 2px solid rgb(63, 57, 57);
   padding: 10px 5px;
@@ -81,10 +85,14 @@ body {
 
 .form .tab-content .form-element button:hover {
   background: #1f2421;
-  color:white;
+  color: white;
 }
 
-::placeholder{
-    color: black;
+::placeholder {
+  color: black;
 }
 
+/* BRENT'S FORM */
+.tab-body.active {
+  display: none;
+}

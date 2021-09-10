@@ -170,32 +170,58 @@ function signIn(){
 
 
 // ========================= DATA VALIDATION =============================
-// function myFunction() {
-//   const message = document.getElementById("p01");
-//   message.innerHTML = "";
-//   let x = document.getElementById("demo").value;
-//   try {
-//     if(x == "") throw "empty";
-//     if(isNaN(x)) throw "not a number";
-//     x = Number(x);
-//     if(x < 5) throw "too low";
-//     if(x > 10) throw "too high";
-//   }
-//   catch(err) {
-//     message.innerHTML = "Input is " + err;
-//   }
-// }
 
-// function validateForms(){
-//   for (index=0;index<arguments.length;index++){
-//     if (isNaN(arguments[index])== false && arguments[index].trim()==null && arguments[index].trim()==""){
-//       return false
+// export default class Validation {
+//   constructor(...arguments) {
+
+//   }
+
+//   validateForms(){
+//     for (index=0;index<arguments.length;index++){
+//       if (isNaN(arguments[index])== false){
+//         return false
+//       }
+//       else if(arguments[index].trim()==null){
+//         return false
+//       }
+//       else if(arguments[index].trim()==""){
+//         return false
+//       }
+//       else{
+//         return true
+//       }
+//     }
+//   }
+
+//   validateEmail(email){
+//     let atpos=email.indexOf("@");  
+//     let dotpos=email.lastIndexOf(".");  
+//     if (atpos<1 || dotpos<atpos+2 || dotpos+2>=atpos.length){  
+//       alert("Please enter a valid e-mail address");  
+//       return false;  
 //     }
 //     else{
 //       return true
+//     }  
+//   }  
+
+//   validateNumbers(){
+//     for (index=0;index<arguments.length;index++){
+//       if (isNaN(parseInt(arguments[index]))){
+//         alert("Enter a valid mobile")
+//         return false; 
+//       }else if (parseInt(arguments[index].trim())==null){
+//         return false; 
+//       }else if(parseInt(arguments[index].trim())==""){
+//         return false
+//       }
+//       else{
+//         return true
+//       }
 //     }
 //   }
 // }
+
 
 
 function validateForms(){
@@ -216,6 +242,7 @@ function validateForms(){
 }
 
 
+
 function validateEmail(email){
   let atpos=email.indexOf("@");  
   let dotpos=email.lastIndexOf(".");  
@@ -227,7 +254,6 @@ function validateEmail(email){
     return true
   }  
 }  
-// console.log(validateEmail("khanyagope"))
 
 function validateNumbers(){
   for (index=0;index<arguments.length;index++){

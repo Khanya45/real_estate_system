@@ -1,8 +1,8 @@
 .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
 }
 .affordabilityCalculatorForm {
   display: flex;
@@ -13,57 +13,65 @@
   height: 100%;
   gap: 10%;
 }
-.formControl{
-    line-height: 50px;
-    display: flex;
-    flex-direction: row;
-    min-width: 125px;
+.formControl {
+  line-height: 50px;
+  display: flex;
+  flex-direction: row;
+  min-width: 125px;
 }
-.formControl input{
-    outline: none;
-    /* text-align: right; */
-    border: 1px solid #d9d9d9;
-    width: 110px;
-    height: 35px;
-    border-radius: 4px;
-    text-align: right;
-    font-size: 16px;
-    color: #000;
-    padding-right: 5px;
-    display: inline-block;
+.formControl input {
+  outline: none;
+  /* text-align: right; */
+  border: 1px solid #d9d9d9;
+  width: 110px;
+  height: 35px;
+  border-radius: 4px;
+  text-align: right;
+  font-size: 16px;
+  color: #000;
+  padding-right: 5px;
+  /* display: inline-block; */
+  position: relative;
+  z-index: -1;
 }
-.row{
-    align-items:flex-start;
+
+.suffix {
+  position: relative;
+  z-index: -1;
 }
-.formControl .label{
-    min-width: 125px;
-    font-size: 14px;
+
+.row {
+  align-items: flex-start;
 }
-.resultContent{
-    text-align: left;
+.formControl .label {
+  min-width: 125px;
+  font-size: 14px;
 }
-.resultContent label{
-    font-size: 14px;
+.resultContent {
+  text-align: left;
 }
-.resultContent .value{
-    font-size: 35px;
-    white-space: nowrap;
+.resultContent label {
+  font-size: 14px;
+}
+.resultContent .value {
+  font-size: 35px;
+  white-space: nowrap;
 }
 .formSubmit {
-    width:100%;
+  width: 100%;
 }
-#affordabilityCalculatorForm button{
-    width: 100%;
-    padding: 5px;
+#affordabilityCalculatorForm button {
+  width: 100%;
+  padding: 5px;
 }
 .noteMgs {
-    width:40%
+  width: 40%;
 }
 @media screen and (max-width: 589px) {
-    .affordabilityCalculatorForm{
-        flex-direction: column;
-    }
-    .resultContent{
-        margin-top: 20px;
-    }
-  }  
+  .affordabilityCalculatorForm {
+    flex-direction: column;
+  }
+  .resultContent {
+    margin-top: 20px;
+  }
+}

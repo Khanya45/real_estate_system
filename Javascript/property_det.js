@@ -116,7 +116,8 @@ function displayPropertyInfo(){
                     <h3>${agent[4]}</h3>
                     <h3>Agent</h3>
                     <h3>${agent[1]}</h3>
-                    <button>Call Agent</button>
+                    <h3 id="mobile" >${agent[7]}</h3>
+                    <button onclick="popUp()">Call Agent</button>
             `
       })
   })
@@ -137,26 +138,88 @@ function send_email(id){
   let textarea = document.getElementById("text-box").value
   body = `I, ${info[0]}\n ${textarea} \n Here my contacts:\n Mobile:${info[1]}\n email:${info[2]}`
   let email = {"email":info[2]}
-  console.log(email)
-  fetch("https://desolate-retreat-38151.herokuapp.com/send-email/"+id+"/"+body+"/", {
-        method: "POST",
-        body: JSON.stringify(email),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-      },
-        })
-    .then((response) => {
-      if (response.status >= 200 && response.status <= 299) {
-        return response.json();
-      } else {
-        throw Error(response.statusText);
-      }
-    })
-    .then((response) => {
-      console.log(response.message)
-    })
-    .catch(error => {
-      alert(error)
-    })
+  let valid = validateForms(info[0], info[2], info[3])
+  let validEmail = validateEmail(info[3])
+  let validNumbetr = validateNumbers(info[1])
+  if (valid == true && validEmail== true && validNumbetr == true){
+    fetch("https://desolate-retreat-38151.herokuapp.com/send-email/"+id+"/"+body+"/", {
+          method: "POST",
+          body: JSON.stringify(email),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        },
+          })
+      .then((response) => {
+        if (response.status >= 200 && response.status <= 299) {
+          return response.json();
+        } else {
+          throw Error(response.statusText);
+        }
+      })
+      .then((response) => {
+        console.log(response.message)
+      })
+      .catch(error => {
+        alert(error)
+      })
+    }else{
+      alert("Invalid inputs")
+    }
 }
 
+function popUp() {
+  let btnCall = document.getElementById("mobile")
+  btnCall.style.visibility = "visible";
+}
+// ========================== VALIDATION =============================
+function validateForms(){
+  for (index=0;index<arguments.length;index++){
+    if (isNaN(arguments[index])== false){
+      return false
+    }
+    else if(arguments[index].trim()==null){
+      return false
+    }
+    else if(arguments[index].trim()==""){
+      return false
+    }
+    else{
+      return true
+    }
+  }
+}
+
+
+
+function validateEmail(email){
+  try {
+    let atpos=email.indexOf("@");  
+    let dotpos=email.lastIndexOf(".");  
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=atpos.length){  
+      alert("Please enter a valid e-mail address");  
+      return false;  
+    }
+    else{
+      return true
+    }
+  }
+  catch(error) {
+    alert("invalid email")
+  } 
+}  
+
+function validateNumbers(){
+  for (index=0;index<arguments.length;index++){
+    if (isNaN(parseInt(arguments[index]))){
+      alert("Enter a valid mobile")
+      return false; 
+    }else if (parseInt(arguments[index].trim())==null){
+      return false; 
+    }else if(parseInt(arguments[index].trim())==""){
+      return false
+    }
+    else{
+      return true
+    }
+  }
+}

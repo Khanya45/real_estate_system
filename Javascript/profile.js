@@ -1,3 +1,9 @@
+// import { Validation } from "./form.js";
+// // let validating = new Validation("khanya", "gope");
+// 'use strict';
+// console.log(Validation.validateForms("khanya", "gope"));
+
+
 loggedUser = JSON.parse(localStorage.getItem("loggedIn"))
 console.log(loggedUser)
 function getLoggedUser(){
@@ -536,5 +542,57 @@ function deleteProperty(id){
   }
   else{
     alert("Please log in")
+  }
+}
+
+function validateForms(){
+  for (index=0;index<arguments.length;index++){
+    if (isNaN(arguments[index])== false){
+      return false
+    }
+    else if(arguments[index].trim()==null){
+      return false
+    }
+    else if(arguments[index].trim()==""){
+      return false
+    }
+    else{
+      return true
+    }
+  }
+}
+
+
+
+function validateEmail(email){
+  try {
+    let atpos=email.indexOf("@");  
+    let dotpos=email.lastIndexOf(".");  
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=atpos.length){  
+      alert("Please enter a valid e-mail address");  
+      return false;  
+    }
+    else{
+      return true
+    }
+  }
+  catch(error) {
+    alert("invalid email")
+  } 
+}  
+
+function validateNumbers(){
+  for (index=0;index<arguments.length;index++){
+    if (isNaN(parseInt(arguments[index]))){
+      alert("Enter a valid mobile")
+      return false; 
+    }else if (parseInt(arguments[index].trim())==null){
+      return false; 
+    }else if(parseInt(arguments[index].trim())==""){
+      return false
+    }
+    else{
+      return true
+    }
   }
 }
