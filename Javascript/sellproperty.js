@@ -45,7 +45,7 @@ function sellProperty() {
       })
       .then((json) => {
         if ((json["status_code"] = 201)) {
-          window.location.replace("http://127.0.0.1:5501/index.html");
+          window.location.replace("/index.html");
         } else {
           alert("Could not add your property");
         }
@@ -72,7 +72,7 @@ function sellProperty() {
         })
         .then((json) => {
           if ((json["status_code"] = 201)) {
-            window.location.replace("http://127.0.0.1:5501/index.html");
+            window.location.replace("/index.html");
           } else {
             alert("Could not add your property");
           }
@@ -81,7 +81,7 @@ function sellProperty() {
           alert(error);
         });
     } else {
-      window.location.replace("http://127.0.0.1:5501/agentlist.html");
+      window.location.replace("/agentlist.html");
     }
   } else {
     alert("Please sign in or create a new account");
